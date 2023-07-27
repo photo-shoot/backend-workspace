@@ -1,0 +1,23 @@
+spring:
+  profiles:
+    active: local
+---
+spring:
+  profiles: local
+  port: 8080
+  datasource:
+    url: jdbc:mysql://localhost:3306/study_db?serverTimezone=UTC&characterEncoding=UTF-8
+    username: admin
+    password: admin
+  jpa:
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+---
+spring:
+  profiles: dev
+  port: 8080
+---
+spring:
+  profiles: prod
+  port: 8080
