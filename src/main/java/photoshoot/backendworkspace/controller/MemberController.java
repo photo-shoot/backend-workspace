@@ -1,9 +1,26 @@
 package photoshoot.backendworkspace.controller;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import photoshoot.backendworkspace.entity.Member;
+import photoshoot.backendworkspace.service.MemberService;
 
+import java.util.List;
+
+@Slf4j
 @RestController
-@RequestMapping("main")
+@RequestMapping("/member")
 public class MemberController {
+    @Autowired
+    MemberService memberService;
+
+    @GetMapping("/all")
+    public ResponseEntity<?> all(){
+        List<Member> memberList = memberService.allMember();
+        return ResponseEntity.ok().body(memberList);
+    }
 }
