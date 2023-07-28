@@ -9,14 +9,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="Tag_Photographer_Rel")
-public class Tag_Photographer_Rel {
+@Table(name="Review_Image")
+public class ReviewImage {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "tag_studio_rel_id")
-    private Long tagStudioRelId;
-    @Column(name = "tag_id")
-    private Long tagId;
-    @Column(name = "photographer_id")
-    private Long photographerId;
+    @Column(name = "review_image_id")
+    private Long reviewImageId;
+
+    @ManyToOne
+    @JoinColumn(name = "review_id")
+    private Review review;
+
 }

@@ -6,32 +6,38 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Review_Photographer")
-public class Review_Photographer {
+@Table(name="Review")
+public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "review_id")
     private Long reviewId;
 
-    @Column(name = "reviewer_id")
-    private Long reviewerId;
+    @ManyToOne
+    @JoinColumn(name = "store_id")
+    private Store store;
 
-    @Column(name = "photographer_id")
-    private Long photographerId;
+    @OneToOne
+    @JoinColumn(name = "member_id")
+    private Member reviewer;
 
     @Column(name = "review_title")
     private String reviewTitle;
 
-    @Column(name = "review_content")
-    private String reviewContent;
+    @Column(name = "review_text")
+    private String reviewText;
+
+    @OneToMany(mappedBy = "review")
+    private List<ReviewImage> reviewImageList;
 
     @Column(name = "star_rating")
-    private Integer starRating;
+    private String starRating;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "review_create_dt")

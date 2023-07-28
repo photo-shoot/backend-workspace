@@ -6,17 +6,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name="Scrap_Studio")
-public class Scrap_Studio {
+@Table(name = "Image")
+public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "scrap_id")
-    private Long scrapId;
-    @Column(name = "studio_id")
-    private Long studioId;
-    @Column(name = "member_id")
-    private Long memberId;
+    @Column(name = "iamge_id")
+    private Long imageId;
+
+    @ManyToOne
+    @JoinColumn(name = "imageList")
+    private Detail detail;
+
 }

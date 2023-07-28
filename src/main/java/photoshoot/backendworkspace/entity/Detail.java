@@ -5,17 +5,22 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name="Detail_Photographer")
-public class Detail_Photographer {
+@Table(name = "Detail")
+public class Detail {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "detail_id")
     private Long detailId;
 
-    @Column(name = "detail_text")
-    private String detailText;
+    @OneToMany(mappedBy = "detail")
+    private List<Image> imageList;
+
+    @Column(name = "description")
+    private String description;
 }

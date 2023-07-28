@@ -1,5 +1,6 @@
 package photoshoot.backendworkspace.entity;
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,21 +10,19 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Price_Studio")
-public class Price_Studio {
-
+@Table(name="Price")
+public class Price {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "member_id")
+    @Column(name = "price_id")
     private Long priceId;
 
-    @Column(name = "price_keys")
-    private String priceKeys;
+    @Column(name = "price_names")
+    private String priceName;
 
     @Column(name = "price_values")
-    private Integer priceValues;
+    private String priceValue;
 
     @Column(name = "etc")
     private String etc;
-
 }

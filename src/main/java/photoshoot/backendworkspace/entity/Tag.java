@@ -17,5 +17,6 @@ public class Tag {
     private Long tagId;
 
     @Column(name = "tag_value")
-    private Long tagValue;
+    private String tagValue;
 }
+

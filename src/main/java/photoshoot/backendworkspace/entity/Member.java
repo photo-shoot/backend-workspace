@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import photoshoot.backendworkspace.MemberType;
 
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -44,5 +44,11 @@ public class Member {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "modify_dt")
     private Timestamp updateDt;
+
+    @OneToMany(mappedBy = "member")
+    private List<Scrap> scrapList;
+
+    @OneToMany(mappedBy = "member")
+    private List<Like> likeList;
 
 }

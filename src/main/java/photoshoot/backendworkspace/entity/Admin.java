@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import photoshoot.backendworkspace.MemberType;
 
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -44,22 +44,7 @@ public class Admin {
     @Column(name = "modify_dt")
     private Timestamp updateDt;
 
-    @Column(name = "studio_id")
-    private Long studioId;
-
-    @Column(name = "photographer_id")
-    private Long photographerId;
-
-    @Column(name = "studio_chatting_id")
-    private Long studioChattingId;
-
-    @Column(name = "photographer_chatting_id")
-    private Long photographerChattingId;
-
-    @Column(name = "studio_book_id")
-    private Long studioBookId;
-
-    @Column(name = "photographer_book_id")
-    private Long photographerBookId;
+    @OneToMany(mappedBy = "admin")
+    private List<Store> storeList;
 
 }
