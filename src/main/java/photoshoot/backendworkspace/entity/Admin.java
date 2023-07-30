@@ -2,6 +2,7 @@ package photoshoot.backendworkspace.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import photoshoot.backendworkspace.MemberType;
@@ -10,6 +11,7 @@ import java.sql.Timestamp;
 import java.util.List;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -19,10 +21,6 @@ public class Admin {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "admin_id")
     private Long adminId;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type")
-    private MemberType type;
 
     @Column(name = "email")
     private String email;

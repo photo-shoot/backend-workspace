@@ -6,6 +6,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-@RequestMapping("admin")
+@RequestMapping("/admin")
 public class AdminController {
 }

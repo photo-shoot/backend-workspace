@@ -1,0 +1,8 @@
+pictain_high = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.us-ashburn-1.oraclecloud.com))(connect_data=(service_name=g8f79466ceb6110_pictain_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+pictain_low = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.us-ashburn-1.oraclecloud.com))(connect_data=(service_name=g8f79466ceb6110_pictain_low.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+pictain_medium = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.us-ashburn-1.oraclecloud.com))(connect_data=(service_name=g8f79466ceb6110_pictain_medium.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+
+

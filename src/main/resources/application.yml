@@ -1,7 +1,9 @@
 spring:
+  config:
+    import: env.properties
   profiles:
     active:
-      - local
+      - test
     group:
       local:
         - local-db
@@ -18,9 +20,9 @@ spring:
     activate:
       on-profile: local-db
   datasource:
-    url: jdbc:mysql://localhost:3306/pictain?serverTimezone=UTC&characterEncoding=UTF-8
-    username: pictain
-    password: pictain123456789
+    url: ${LOCAL_DB_URL}
+    username: ${LOCAL_DB_USERNAME}
+    password: ${LOCAL_DB_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: update
@@ -33,3 +35,19 @@ spring:
 server:
   port: 8080
 ---
+spring:
+  config:
+    activate:
+      on-profile: prod-db
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: ${ORACLE_DB_URL}
+    username: ${ORACLE_DB_USERNAME}
+    password: ${ORACLE_DB_PASSWORD}
+#  oracle:
+#    net:
+#      wallet_location: (SOURCE=(METHOD=FILE)(METHOD_DATA=(DIRECTORY=${TNS_ADMIN})))
+  jpa:
+    hibernate:
+      ddl-auto: create
+      show-sql: true

@@ -2,14 +2,18 @@ package photoshoot.backendworkspace.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import photoshoot.backendworkspace.MemberType;
 
 import java.sql.Timestamp;
 import java.util.List;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -21,10 +25,6 @@ public class Member {
     @Column(name = "member_id")
     private Long memberId;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type")
-    private MemberType type;
-
     @Column(name = "email")
     private String email;
 
@@ -35,12 +35,14 @@ public class Member {
     private String nickname;
 
     @Column(name = "profile_image_name")
-    private String profileImage_name;
+    private String profileImageName;
 
+    @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_dt")
     private Timestamp createDt;
 
+    @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "modify_dt")
     private Timestamp updateDt;

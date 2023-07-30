@@ -20,7 +20,7 @@ public class MemberController {
 
     @GetMapping("/all")
     public ResponseEntity<?> all(){
-        List<Member> memberList = memberService.allMember();
+        List<Member> memberList = memberService.listMember();
         return ResponseEntity.ok().body(memberList);
     }
 }
