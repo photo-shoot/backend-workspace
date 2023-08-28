@@ -1,5 +1,6 @@
 package photoshoot.backendworkspace.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 import photoshoot.backendworkspace.MemberType;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -34,6 +36,9 @@ public class Admin {
     @Column(name = "profile_image_name")
     private String profileImageName;
 
+    @Column(name = "profile_image_path")
+    private String profileImagePath;
+
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_dt")
     private Timestamp createDt;
@@ -43,6 +48,6 @@ public class Admin {
     private Timestamp updateDt;
 
     @OneToMany(mappedBy = "admin")
-    private List<Store> storeList;
+    final private List<Store> storeList = new ArrayList<>();
 
 }

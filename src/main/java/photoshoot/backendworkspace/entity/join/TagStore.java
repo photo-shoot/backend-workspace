@@ -1,9 +1,11 @@
 package photoshoot.backendworkspace.entity.join;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import photoshoot.backendworkspace.entity.Scrap;
 import photoshoot.backendworkspace.entity.Store;
+import photoshoot.backendworkspace.entity.Tag;
 
 @Data
 @Entity
@@ -12,11 +14,11 @@ import photoshoot.backendworkspace.entity.Store;
 public class TagStore {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "scrap_store_id")
-    private Long scrap_store_id;
+    @Column(name = "tag_store_id")
+    private Long tag_store_id;
     @ManyToOne
     @JoinColumn(name = "tag_id")
-    private Scrap tag;
+    private Tag tag;
     @ManyToOne
     @JoinColumn(name = "store_id")
     private Store store;

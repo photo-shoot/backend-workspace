@@ -12,10 +12,6 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class MemberService {
-    private final MemberRepository memberRepository;
 
-    public List<Member> listMember(){
-        return memberRepository.findAll();
-    }
 
 }

@@ -2,6 +2,7 @@ package photoshoot.backendworkspace.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,6 +17,6 @@ public class Category {
     private String name;
 
     @ManyToMany(mappedBy = "categoryList")
-    private List<Store> storeList;
+    final private List<Store> storeList = new ArrayList<>();
 
 }

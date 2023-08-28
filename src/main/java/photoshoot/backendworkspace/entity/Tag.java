@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import photoshoot.backendworkspace.dto.tag.TagDTO;
 
 @Data
 @AllArgsConstructor
@@ -18,5 +19,11 @@ public class Tag {
 
     @Column(name = "tag_value")
     private String tagValue;
+
+    public static TagDTO toDTO(Tag entity){
+        return TagDTO.builder()
+                .tagValue(entity.getTagValue())
+                .build();
+    }
 }
 

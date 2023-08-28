@@ -1,8 +1,6 @@
-package photoshoot.backendworkspace.dto.signup;
+package photoshoot.backendworkspace.dto.sign;
 
-import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-import photoshoot.backendworkspace.MemberType;
 import photoshoot.backendworkspace.entity.Admin;
 import photoshoot.backendworkspace.entity.Member;
 
@@ -14,6 +12,7 @@ public class SignupRequestDTO {
     private String nickname;
     private String type; // MEMBER, ADMIN
     private String profileImageName;
+    private String profileImagePath;
 
     public static Member toMemberEntity(SignupRequestDTO dto){
         return Member.builder()
@@ -21,6 +20,7 @@ public class SignupRequestDTO {
                 .password(dto.getPassword())
                 .nickname(dto.getNickname())
                 .profileImageName(dto.getProfileImageName())
+                .profileImagePath(dto.getProfileImagePath())
                 .build();
     }
 
@@ -30,6 +30,7 @@ public class SignupRequestDTO {
                 .password(dto.getPassword())
                 .nickname(dto.getNickname())
                 .profileImageName(dto.getProfileImageName())
+                .profileImagePath(dto.getProfileImagePath())
                 .build();
     }
 }

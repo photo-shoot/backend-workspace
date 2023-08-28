@@ -25,3 +25,4 @@ replay_pid*
 
 # 민감정보 모음
 env.properties
+Wallet/

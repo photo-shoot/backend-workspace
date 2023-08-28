@@ -10,6 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import photoshoot.backendworkspace.MemberType;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -37,6 +38,9 @@ public class Member {
     @Column(name = "profile_image_name")
     private String profileImageName;
 
+    @Column(name = "profile_image_path")
+    private String profileImagePath;
+
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_dt")
@@ -48,9 +52,9 @@ public class Member {
     private Timestamp updateDt;
 
     @OneToMany(mappedBy = "member")
-    private List<Scrap> scrapList;
+    final private List<Scrap> scrapList = new ArrayList<>();
 
     @OneToMany(mappedBy = "member")
-    private List<Like> likeList;
+    final private List<Like> likeList = new ArrayList<>();
 
 }

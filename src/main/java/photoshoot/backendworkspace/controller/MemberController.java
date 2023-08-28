@@ -18,9 +18,4 @@ public class MemberController {
     @Autowired
     MemberService memberService;
 
-    @GetMapping("/all")
-    public ResponseEntity<?> all(){
-        List<Member> memberList = memberService.listMember();
-        return ResponseEntity.ok().body(memberList);
-    }
 }

@@ -1,5 +1,6 @@
 package photoshoot.backendworkspace.entity.join;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import photoshoot.backendworkspace.entity.Like;

@@ -1,11 +1,13 @@
 package photoshoot.backendworkspace.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -18,7 +20,7 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "review_id")
     private Long reviewId;
-
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "store_id")
     private Store store;
@@ -34,7 +36,7 @@ public class Review {
     private String reviewText;
 
     @OneToMany(mappedBy = "review")
-    private List<ReviewImage> reviewImageList;
+    final private List<ReviewImage> reviewImageList = new ArrayList<>();
 
     @Column(name = "star_rating")
     private String starRating;
