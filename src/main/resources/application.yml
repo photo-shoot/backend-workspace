@@ -15,7 +15,7 @@ spring:
       prod:
         - prod-db
         - prod-server
-        - prod-oauth2
+        #- prod-oauth2
 ---
 spring:
   config:
@@ -62,7 +62,7 @@ spring:
     driver-class-name: oracle.jdbc.OracleDriver
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
       show-sql: true
       dialect: org.hibernate.dialect.Oracle11gDialect
 ---
@@ -71,7 +71,7 @@ spring:
     activate:
       on-profile: prod-server
 server:
-  port: 9999
+  port: 8080
 ---
 spring:
   config:

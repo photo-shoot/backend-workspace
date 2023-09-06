@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
-public class CustomExceptionHandler {
-    @ExceptionHandler(CustomException.class)
-    public ResponseEntity<?> handleCustomException(CustomException e){
+public class PictainExceptionHandler {
+    @ExceptionHandler(PictainException.class)
+    public ResponseEntity<?> handleCustomException(PictainException e){
         return ResponseEntity.status(e.getHttpStatus()).body(e.getMessage());
     }
 }

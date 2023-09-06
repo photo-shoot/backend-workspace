@@ -7,12 +7,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import photoshoot.backendworkspace.dto.sign.SigninRequestDTO;
 import photoshoot.backendworkspace.dto.sign.SignupRequestDTO;
 import photoshoot.backendworkspace.service.SignService;
 
 @Slf4j
 @RestController
-@Tag(name = "Sign api")
+@Tag(name = "Sign api", description = "회원가입, 로그인 관련 api입니다.")
 public class SignController {
 
     @Autowired

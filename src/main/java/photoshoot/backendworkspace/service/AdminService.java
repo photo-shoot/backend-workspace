@@ -20,14 +20,13 @@ import photoshoot.backendworkspace.dto.studio.create.response.CreateStudioRespon
 import photoshoot.backendworkspace.dto.studio.select.AdminSelectStudioResponseDTO;
 import photoshoot.backendworkspace.dto.studio.update.UpdateStudioRequestDTO;
 import photoshoot.backendworkspace.entity.*;
-import photoshoot.backendworkspace.exception.CustomException;
+import photoshoot.backendworkspace.exception.PictainException;
 import photoshoot.backendworkspace.repository.AdminRepository;
 import photoshoot.backendworkspace.repository.PhotographerRepository;
 import photoshoot.backendworkspace.repository.StoreRepository;
 import photoshoot.backendworkspace.repository.StudioRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @Service
@@ -56,13 +55,13 @@ public class AdminService {
     }
 
     public AdminSelectStudioResponseDTO selectStudio(Long storeId){
-        AdminSelectStudioResponseDTO selectedStudio = Studio.toAdminSelectResponseDTO(studioRepository.findByStoreId(storeId).orElseThrow(() -> new CustomException("Studio가 존재하지 않습니다.", HttpStatus.NOT_FOUND)));
+        AdminSelectStudioResponseDTO selectedStudio = Studio.toAdminSelectResponseDTO(studioRepository.findByStoreId(storeId).orElseThrow(() -> new PictainException("Studio가 존재하지 않습니다.", HttpStatus.NOT_FOUND)));
         return selectedStudio;
     }
 
     @Transactional
     public AdminSelectStudioResponseDTO updateStudio(UpdateStudioRequestDTO changedDTO, Long storeId){
-        Studio origin = studioRepository.findByStoreId(storeId).orElseThrow(() -> new CustomException("해당 studio가 존재하지 않습니다.", HttpStatus.NOT_FOUND));
+        Studio origin = studioRepository.findByStoreId(storeId).orElseThrow(() -> new PictainException("해당 studio가 존재하지 않습니다.", HttpStatus.NOT_FOUND));
         if(changedDTO.getTitle() != null) origin.setTitle(changedDTO.getTitle());
         if(changedDTO.getShortDescription() != null) origin.setShortDescription(changedDTO.getShortDescription());
         if(changedDTO.getProfileImgName() != null) origin.setProfileImgName(changedDTO.getProfileImgName());
@@ -78,7 +77,7 @@ public class AdminService {
 
     @Transactional
     public void deleteStudio(Long storeId){
-        Studio studio = studioRepository.findByStoreId(storeId).orElseThrow(()->new CustomException("해당 studio가 존재하지 않아 삭제할 수 없습니다.", HttpStatus.NOT_FOUND));
+        Studio studio = studioRepository.findByStoreId(storeId).orElseThrow(()->new PictainException("해당 studio가 존재하지 않아 삭제할 수 없습니다.", HttpStatus.NOT_FOUND));
         studioRepository.delete(studio);
     }
 
@@ -93,13 +92,13 @@ public class AdminService {
     }
 
     public AdminSelectPhotographerResponseDTO selectPhotographer(Long storeId){
-        AdminSelectPhotographerResponseDTO selectedPhotographer = Photographer.toAdminSelectResponseDTO(photographerRepository.findByStoreId(storeId).orElseThrow(()->new CustomException("선택하신 photographer가 없습니다.", HttpStatus.NOT_FOUND)));
+        AdminSelectPhotographerResponseDTO selectedPhotographer = Photographer.toAdminSelectResponseDTO(photographerRepository.findByStoreId(storeId).orElseThrow(()->new PictainException("선택하신 photographer가 없습니다.", HttpStatus.NOT_FOUND)));
         return selectedPhotographer;
     }
 
     @Transactional
     public AdminSelectPhotographerResponseDTO updatePhotographer(UpdatePhotographerRequestDTO changedDTO, Long storeId){
-        Photographer origin = photographerRepository.findByStoreId(storeId).orElseThrow(() -> new CustomException("해당 photographer가 존재하지 않습니다.", HttpStatus.NOT_FOUND));
+        Photographer origin = photographerRepository.findByStoreId(storeId).orElseThrow(() -> new PictainException("해당 photographer가 존재하지 않습니다.", HttpStatus.NOT_FOUND));
         if(changedDTO.getTitle() != null) origin.setTitle(changedDTO.getTitle());
         if(changedDTO.getShortDescription() != null) origin.setShortDescription(changedDTO.getShortDescription());
         if(changedDTO.getProfileImgName() != null) origin.setProfileImgName(changedDTO.getProfileImgName());
@@ -115,7 +114,7 @@ public class AdminService {
 
     @Transactional
     public void deletePhotographer(Long storeId){
-        Photographer photographer = photographerRepository.findByStoreId(storeId).orElseThrow(()->new CustomException("해당 photographer가 존재하지 않아 삭제할 수 없습니다.", HttpStatus.NOT_FOUND));
+        Photographer photographer = photographerRepository.findByStoreId(storeId).orElseThrow(()->new PictainException("해당 photographer가 존재하지 않아 삭제할 수 없습니다.", HttpStatus.NOT_FOUND));
         photographerRepository.delete(photographer);
     }
 
@@ -130,7 +129,7 @@ public class AdminService {
         List<CreatePriceDTO> priceDTOList = storeDTO.getCreatePriceDTOList();
         res.setCreatedDetail(Detail.create(detailDTO));
         res.setCreatedPrice(Price.create(priceDTOList));
-        res.setAdmin(adminRepository.findById(storeDTO.getAdminId()).orElseThrow(() -> new CustomException("Studio 및 Photographer 생성 Admin 계정이 유효하지 않습니다.", HttpStatus.NOT_FOUND)));
+        res.setAdmin(adminRepository.findById(storeDTO.getAdminId()).orElseThrow(() -> new PictainException("Studio 및 Photographer 생성 Admin 계정이 유효하지 않습니다.", HttpStatus.NOT_FOUND)));
         return res;
     }
 

@@ -1,4 +1,3 @@
-/*
 package photoshoot.backendworkspace.oauth;
 
 import lombok.Builder;
@@ -37,17 +36,18 @@ public class OAuthAttributes {
                 .build();
     }
 
-    public Member getNaverMember(){
+    // 네이버 계정에서 이메일만 가져오고, 나머지는 사용자가 직접 치기
+    public Member toMemberEntity(){
         return Member.builder()
                 .email(email)
                 .build();
     }
 
-    public Admin getNaverAdmin(){
+    // 네이버 계정에서 이메일만 가져오고, 나머지는 사용자가 직접 치기
+    public Admin toEntityEntity(){
         return Admin.builder()
                 .email(email)
                 .build();
     }
 
 }
-*/

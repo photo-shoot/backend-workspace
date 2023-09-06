@@ -4,11 +4,11 @@ import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
 @Getter
-public class CustomException extends RuntimeException{
+public class PictainException extends RuntimeException{
     private String message;
     private HttpStatus httpStatus;
 
-    public CustomException(String message, HttpStatus httpStatus){
+    public PictainException(String message, HttpStatus httpStatus){
         this.message = message;
         this.httpStatus = httpStatus;
     }
